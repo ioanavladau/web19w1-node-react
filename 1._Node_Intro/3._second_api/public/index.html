@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>Something</p>
+    <button id="about-me-btn">See about me info</button>
+    <p class="about-me-content"></p>
+    <script>
+        // create a link or a button. Once clicked
+        // call a GET request with AJAX
+        // that returns the about me info from the server
+        // then take the response and display it on the page
+
+
+
+        // $("#about-me-btn").click(function() {
+        //     $.get("/about", function(data) {    
+        //         $(".about-me-content").html(data);
+        //     })
+        // });
+
+
+
+
+
+        $("#about-me-btn").click(function() {
+            $.ajax({
+                type:"get",
+                url:"/about",
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    $(".about-me-content").html(JSON.stringify(data));
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>
