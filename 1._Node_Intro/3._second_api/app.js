@@ -8,9 +8,9 @@ const app = express();
 const bodyParser = require("body-parser");
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // allow to serve static files from here
 app.use(express.static('public'));
@@ -81,6 +81,28 @@ app.get('/about', (req, res) => {
 app.post("/myfavoriteanimal", (req, res) => {
     console.log("Here is the body: ", req.body);
     res.send("Your favorite animal is " + req.body.favoriteAnimal);
+});
+
+
+// let firstName = "Placeholder";
+// let lastName = "Placeholder2";
+
+
+app.post("/aboutme", (req, res) => {
+    console.log("Here is the body: ", req.body);
+    firstName =  req.body.firstName;
+    lastName = req.body.lastName;
+    res.json(req.body);
+});
+
+
+app.get("/aboutme", (req, res) => {
+    // const response = { firstName, lastName };
+    const response = {
+        firstName: req.query.firstName,
+        lastName: req.query.lastName
+    };
+    res.json(response);
 });
 
 

@@ -10,70 +10,17 @@
 <body>
     <p>This is index page</p>
     <button id="about-me-btn">See about me info</button>
-    <p class="about-me-content"></p>
-    <script>
-        // create a link or a button. Once clicked
-        // call a GET request with AJAX
-        // that returns the about me info from the server
-        // then take the response and display it on the page
+    <div class="about-me-content"></div>
+
+    <h1>About Me Details</h1>
+    <form id="about-me-frm" method="POST">
+        <input id="first-name" name="firstName" placeholder="First Name">
+        <input id="last-name" name="lastName" placeholder="Last Name">
+        <button id="about-me-form-btn">Submit</button>
+    </form>
+    <div class="about-me-content-form"></div>
 
 
-
-        // $("#about-me-btn").click(function() {
-        //     $.get("/about", function(data) {    
-        //         $(".about-me-content").html(data);
-        //     })
-        // });
-
-
-        $(document).ready(() => {
-            // add event handler for about me button
-            let aboutmeIsClicked = true;
-            $("#about-me-btn").click((event) => {
-                if (aboutmeIsClicked) {
-                    $.get("/about", data => {    
-                        console.log(data);
-                        $(".about-me-content").append("<div>First name: " + data.firstName + "</div>");
-                        $(".about-me-content").append("<div>Last name: " + data.lastName + "</div>");
-                    })
-                } else {
-                    $(".about-me-content").empty();
-                }
-                aboutmeIsClicked = !aboutmeIsClicked;
-            });
-        });
-
-        // Syntactical difference, but the same
-        // $(document).on("click", () => {
-
-        // });
-
-
-        // $("#about-me-btn").click(function() {
-        //     $.ajax({
-        //         type:"get",
-        //         url:"/about",
-        //         dataType: 'json',
-        //         contentType: 'application/json',
-        //         success: function (data) {
-        //             console.log(data);
-        //             $(".about-me-content").html(JSON.stringify(data));
-        //         }
-        //     })
-        // })
-
-
-        // variable - global that moves const response up toop 
-
-        // create a form that posts to a new request handler on the server
-        // this request handler should be called POST /aboutme 
-        // (send the form with a body) the /aboutme should receive a body with a new firstName and Lastname
-
-        // onde posted to /aboutme it should change the now global aboutme variable
-        // and calling GET /aboutme should allow for a different result
-
-        // if you change the name in the get next time, see the new name
-
-    </script>
+    <script src="ajax.js"></script>
 </body>
 </html>
